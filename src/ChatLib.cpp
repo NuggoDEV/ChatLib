@@ -1,6 +1,6 @@
 #include "ChatLib.hpp"
 #include "Logger.hpp"
-#include "Services/IRC/TestClient.hpp"
+#include "IRC/TestClient.hpp"
 
 bool didInit = false;
 

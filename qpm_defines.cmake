@@ -5,7 +5,7 @@ set(MOD_VERSION "0.0.1")
 set(MOD_ID "ChatLib")
 
 # derived from override .so name or just id_version
-set(COMPILE_ID "chatlib")
+set(COMPILE_ID "chatlib_0_0_1")
 # derived from whichever codegen package is installed, will default to just codegen
 set(CODEGEN_ID "codegen")
 

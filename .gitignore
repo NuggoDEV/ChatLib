@@ -3,3 +3,4 @@ ndkpath.txt
 build/
 extern/
 .cache/
+cmake-build-debug/
