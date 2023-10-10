@@ -1,0 +1,23 @@
+{
+  "_QPVersion": "1.0.0",
+  "name": "ChatLib",
+  "id": "chatlib",
+  "author": "---",
+  "version": "0.0.1",
+  "description": "chatlib, version 0.0.1!",
+  "dependencies": [
+    {
+      "version": "^0.8.4",
+      "id": "socket_lib",
+      "downloadIfMissing": "https://github.com/Fernthedev/SocketLibLinux/releases/download/v0.8.4/socket_lib.qmod"
+    }
+  ],
+  "modFiles": [
+    "libchatlib.so"
+  ],
+  "libraryFiles": [
+    "libbeatsaber-hook_3_14_0.so"
+  ],
+  "fileCopies": [],
+  "copyExtensions": []
+}
