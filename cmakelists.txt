@@ -30,7 +30,7 @@ add_library(
     SHARED 
     ${cpp_file_list}
     ${c_file_list}
-)
+        shared/Objects/Twitch/Client.hpp)
 
 # add src dir as include dir
 target_include_directories(${COMPILE_ID} PRIVATE ${SOURCE_DIR})

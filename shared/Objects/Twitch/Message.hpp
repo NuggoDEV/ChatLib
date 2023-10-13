@@ -1,4 +1,7 @@
+#include <string>
+
 namespace Twitch {
+
     class Message {
     private:
 

@@ -18,6 +18,11 @@
       "id": "socket_lib",
       "versionRange": "^0.8.4",
       "additionalData": {}
+    },
+    {
+      "id": "custom-types",
+      "versionRange": "^0.15.24",
+      "additionalData": {}
     }
   ],
   "workspace": null

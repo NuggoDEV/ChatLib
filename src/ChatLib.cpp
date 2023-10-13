@@ -1,6 +1,5 @@
 #include "ChatLib.hpp"
 #include "Logger.hpp"
-#include "IRC/TestClient.hpp"
 
 bool didInit = false;
 
@@ -19,7 +18,6 @@ extern "C" void setup(ModInfo& info)
 extern "C" void load()
 {
     ChatLib::Init();
-    Test();
 }
 
 void ChatLib::Init()
