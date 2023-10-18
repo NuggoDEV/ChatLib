@@ -30,7 +30,8 @@ add_library(
     SHARED 
     ${cpp_file_list}
     ${c_file_list}
-        shared/Objects/Twitch/Client.hpp)
+        shared/Objects/Twitch/Client.hpp src/WebServer/WebServer.cpp include/WebServer/WebServer.hpp include/httplib/httplib.h
+)
 
 # add src dir as include dir
 target_include_directories(${COMPILE_ID} PRIVATE ${SOURCE_DIR})
@@ -46,6 +47,7 @@ target_include_directories(${COMPILE_ID} PRIVATE ${EXTERN_DIR}/includes/${CODEGE
 target_link_libraries(${COMPILE_ID} PRIVATE -llog)
 # add extern stuff like libs and other includes
 include(extern.cmake)
+include(assets_include.cmake)
 
 add_custom_command(TARGET ${COMPILE_ID} POST_BUILD
             COMMAND ${CMAKE_STRIP} -g -S -d --strip-all
