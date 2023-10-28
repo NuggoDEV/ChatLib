@@ -7,13 +7,18 @@
   "description": "chatlib, version 0.0.1!",
   "dependencies": [
     {
-      "version": "^0.8.4",
-      "id": "socket_lib",
-      "downloadIfMissing": "https://github.com/Fernthedev/SocketLibLinux/releases/download/v0.8.4/socket_lib.qmod"
+      "version": "^0.15.24",
+      "id": "custom-types",
+      "downloadIfMissing": "https://github.com/sc2ad/Il2CppQuestTypePatching/releases/download/v0.15.24/CustomTypes.qmod"
+    },
+    {
+      "version": "^0.1.3",
+      "id": "safestorage",
+      "downloadIfMissing": "https://github.com/hdgamer1404Jonas/SafeStorage/releases/download/v0.1.3/SafeStorage.qmod"
     }
   ],
   "modFiles": [
-    "libchatlib.so"
+    "libchatlib_0_0_1.so"
   ],
   "libraryFiles": [
     "libbeatsaber-hook_3_14_0.so"

@@ -18,12 +18,17 @@
       "id": "custom-types",
       "versionRange": "^0.15.24",
       "additionalData": {}
+    },
+    {
+      "id": "safestorage",
+      "versionRange": "^0.1.3",
+      "additionalData": {}
     }
   ],
   "workspace": {
     "scripts": {
-      "restart": [
-        "pwsh ./scripts/restart-game.ps1"
+      "build": [
+        "pwsh ./scripts/build.ps1"
       ],
       "copy": [
         "pwsh ./scripts/copy.ps1"
@@ -31,18 +36,18 @@
       "logcat": [
         "pwsh ./scripts/start-logging.ps1"
       ],
+      "qmod": [
+        "pwsh ./scripts/build.ps1",
+        "pwsh ./scripts/createqmod.ps1"
+      ],
+      "restart": [
+        "pwsh ./scripts/restart-game.ps1"
+      ],
       "stack": [
         "pwsh ./scripts/ndk-stack.ps1"
       ],
       "tomb": [
         "pwsh ./scripts/pull-tombstone.ps1"
-      ],
-      "qmod": [
-        "pwsh ./scripts/build.ps1",
-        "pwsh ./scripts/createqmod.ps1"
-      ],
-      "build": [
-        "pwsh ./scripts/build.ps1"
       ]
     }
   }

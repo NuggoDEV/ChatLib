@@ -4,8 +4,7 @@ target_include_directories(${COMPILE_ID} PRIVATE ${EXTERN_DIR}/includes)
 target_include_directories(${COMPILE_ID} SYSTEM PRIVATE ${EXTERN_DIR}/includes/libil2cpp/il2cpp/libil2cpp)
 
 # includes and compile options added by other libraries
-target_include_directories(${COMPILE_ID} SYSTEM PRIVATE ${EXTERN_DIR}/includes/fmt/fmt/include/)
-target_compile_options(${COMPILE_ID} PRIVATE -DFMT_HEADER_ONLY)
+# Sadly, there were none with extra include dirs
 
 # libs dir -> stores .so or .a files (or symlinked!)
 target_link_directories(${COMPILE_ID} PRIVATE ${EXTERN_DIR}/libs)

@@ -16,33 +16,44 @@
         "additionalData": {}
       },
       {
-        "id": "socket_lib",
-        "versionRange": "^0.8.4",
-        "additionalData": {}
-      },
-      {
         "id": "custom-types",
         "versionRange": "^0.15.24",
         "additionalData": {}
+      },
+      {
+        "id": "safestorage",
+        "versionRange": "^0.1.3",
+        "additionalData": {}
       }
     ],
-    "workspace": null
+    "workspace": {
+      "scripts": {
+        "build": [
+          "pwsh ./scripts/build.ps1"
+        ],
+        "copy": [
+          "pwsh ./scripts/copy.ps1"
+        ],
+        "logcat": [
+          "pwsh ./scripts/start-logging.ps1"
+        ],
+        "qmod": [
+          "pwsh ./scripts/build.ps1",
+          "pwsh ./scripts/createqmod.ps1"
+        ],
+        "restart": [
+          "pwsh ./scripts/restart-game.ps1"
+        ],
+        "stack": [
+          "pwsh ./scripts/ndk-stack.ps1"
+        ],
+        "tomb": [
+          "pwsh ./scripts/pull-tombstone.ps1"
+        ]
+      }
+    }
   },
   "restoredDependencies": [
-    {
-      "dependency": {
-        "id": "paper",
-        "versionRange": "=1.2.14",
-        "additionalData": {
-          "soLink": "https://github.com/Fernthedev/paperlog/releases/download/v1.2.14/libpaperlog.so",
-          "debugSoLink": "https://github.com/Fernthedev/paperlog/releases/download/v1.2.14/debug_libpaperlog.so",
-          "overrideSoName": "libpaperlog.so",
-          "modLink": "https://github.com/Fernthedev/paperlog/releases/download/v1.2.14/paperlog.qmod",
-          "branchName": "version/v1_2_14"
-        }
-      },
-      "version": "1.2.14"
-    },
     {
       "dependency": {
         "id": "libil2cpp",
@@ -67,6 +78,18 @@
     },
     {
       "dependency": {
+        "id": "beatsaber-hook",
+        "versionRange": "=3.14.0",
+        "additionalData": {
+          "soLink": "https://github.com/sc2ad/beatsaber-hook/releases/download/v3.14.0/libbeatsaber-hook_3_14_0.so",
+          "debugSoLink": "https://github.com/sc2ad/beatsaber-hook/releases/download/v3.14.0/debug_libbeatsaber-hook_3_14_0.so",
+          "branchName": "version-v3.14.0"
+        }
+      },
+      "version": "3.14.0"
+    },
+    {
+      "dependency": {
         "id": "custom-types",
         "versionRange": "=0.15.24",
         "additionalData": {
@@ -81,48 +104,17 @@
     },
     {
       "dependency": {
-        "id": "socket_lib",
-        "versionRange": "=0.8.4",
+        "id": "safestorage",
+        "versionRange": "=0.1.3",
         "additionalData": {
-          "soLink": "https://github.com/Fernthedev/SocketLibLinux/releases/download/v0.8.4/libsocket_lib.so",
-          "debugSoLink": "https://github.com/Fernthedev/SocketLibLinux/releases/download/v0.8.4/debug_libsocket_lib.so",
-          "overrideSoName": "libsocket_lib.so",
-          "modLink": "https://github.com/Fernthedev/SocketLibLinux/releases/download/v0.8.4/socket_lib.qmod",
-          "branchName": "version-v0.8.4"
+          "soLink": "https://github.com/hdgamer1404Jonas/SafeStorage/releases/download/v0.1.3/libsafestorage.so",
+          "overrideSoName": "libsafestorage.so",
+          "modLink": "https://github.com/hdgamer1404Jonas/SafeStorage/releases/download/v0.1.3/SafeStorage.qmod",
+          "branchName": "version/v0_1_3",
+          "cmake": true
         }
       },
-      "version": "0.8.4"
-    },
-    {
-      "dependency": {
-        "id": "beatsaber-hook",
-        "versionRange": "=3.14.0",
-        "additionalData": {
-          "soLink": "https://github.com/sc2ad/beatsaber-hook/releases/download/v3.14.0/libbeatsaber-hook_3_14_0.so",
-          "debugSoLink": "https://github.com/sc2ad/beatsaber-hook/releases/download/v3.14.0/debug_libbeatsaber-hook_3_14_0.so",
-          "branchName": "version-v3.14.0"
-        }
-      },
-      "version": "3.14.0"
-    },
-    {
-      "dependency": {
-        "id": "fmt",
-        "versionRange": "=10.0.0",
-        "additionalData": {
-          "headersOnly": true,
-          "branchName": "version/v10_0_0",
-          "compileOptions": {
-            "systemIncludes": [
-              "fmt/include/"
-            ],
-            "cppFlags": [
-              "-DFMT_HEADER_ONLY"
-            ]
-          }
-        }
-      },
-      "version": "10.0.0"
+      "version": "0.1.3"
     }
   ]
 }
