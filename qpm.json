@@ -15,15 +15,35 @@
       "additionalData": {}
     },
     {
-      "id": "socket_lib",
-      "versionRange": "^0.8.4",
-      "additionalData": {}
-    },
-    {
       "id": "custom-types",
       "versionRange": "^0.15.24",
       "additionalData": {}
     }
   ],
-  "workspace": null
+  "workspace": {
+    "scripts": {
+      "restart": [
+        "pwsh ./scripts/restart-game.ps1"
+      ],
+      "copy": [
+        "pwsh ./scripts/copy.ps1"
+      ],
+      "logcat": [
+        "pwsh ./scripts/start-logging.ps1"
+      ],
+      "stack": [
+        "pwsh ./scripts/ndk-stack.ps1"
+      ],
+      "tomb": [
+        "pwsh ./scripts/pull-tombstone.ps1"
+      ],
+      "qmod": [
+        "pwsh ./scripts/build.ps1",
+        "pwsh ./scripts/createqmod.ps1"
+      ],
+      "build": [
+        "pwsh ./scripts/build.ps1"
+      ]
+    }
+  }
 }
