@@ -29,4 +29,4 @@ void ChatLib::Init()
     getLogger().info("Started initializing");
 
     il2cpp_functions::Init();
-}
+} 
