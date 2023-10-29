@@ -34,6 +34,7 @@ struct IncludedAsset {
     const IncludedAsset name { _binary_##name##_start, _binary_##name##_end};
 namespace IncludedAssets {
 
+	DECLARE_FILE(header_background_jpg)
 	DECLARE_FILE(index_html)
 
 }
