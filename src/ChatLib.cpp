@@ -1,5 +1,6 @@
 #include "ChatLib.hpp"
 #include "Logger.hpp"
+#include "WebServer/WebServer.hpp"
 
 bool didInit = false;
 
@@ -24,6 +25,8 @@ void ChatLib::Init()
 {
     if (didInit)
         return;
+
+    WebServer::start();
 
     didInit = true;
     getLogger().info("Started initializing");
