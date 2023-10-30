@@ -1,5 +1,6 @@
 #include "WebServer/WebServer.hpp"
 #include "assets.hpp"
+#include "WebServer/ServeAssets.hpp"
 
 
 namespace WebServer {
@@ -15,6 +16,8 @@ namespace WebServer {
                 const std::string_view htmlContent = static_cast<std::string_view>(IncludedAssets::index_html);
                 res.set_content(htmlContent.data(), htmlContent.size(), "text/html");
             });
+
+            serveAssets(server);
 
             server.Get("/authorization", [](const httplib::Request& req, httplib::Response& res) {
                 std::string params = "";
