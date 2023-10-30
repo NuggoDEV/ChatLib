@@ -24,11 +24,6 @@
         "additionalData": {}
       },
       {
-        "id": "safestorage",
-        "versionRange": "^0.1.3",
-        "additionalData": {}
-      },
-      {
         "id": "codegen",
         "versionRange": "^0.33.0",
         "additionalData": {}
@@ -37,6 +32,11 @@
         "id": "bsml",
         "versionRange": "^0.3.3",
         "additionalData": {}
+      },
+      {
+        "id": "safestorage",
+        "versionRange": "^0.1.5",
+        "additionalData": {}
       }
     ],
     "workspace": {
@@ -44,11 +44,11 @@
         "build": [
           "pwsh ./scripts/build.ps1"
         ],
-        "stack": [
-          "pwsh ./scripts/ndk-stack.ps1"
-        ],
         "copy": [
           "pwsh ./scripts/copy.ps1"
+        ],
+        "logcat": [
+          "pwsh ./scripts/start-logging.ps1"
         ],
         "qmod": [
           "pwsh ./scripts/build.ps1",
@@ -57,11 +57,11 @@
         "restart": [
           "pwsh ./scripts/restart-game.ps1"
         ],
+        "stack": [
+          "pwsh ./scripts/ndk-stack.ps1"
+        ],
         "tomb": [
           "pwsh ./scripts/pull-tombstone.ps1"
-        ],
-        "logcat": [
-          "pwsh ./scripts/start-logging.ps1"
         ]
       }
     }
@@ -134,16 +134,16 @@
     {
       "dependency": {
         "id": "safestorage",
-        "versionRange": "=0.1.3",
+        "versionRange": "=0.1.5",
         "additionalData": {
-          "soLink": "https://github.com/hdgamer1404Jonas/SafeStorage/releases/download/v0.1.3/libsafestorage.so",
+          "soLink": "https://github.com/hdgamer1404Jonas/SafeStorage/releases/download/v0.1.5/libsafestorage.so",
           "overrideSoName": "libsafestorage.so",
-          "modLink": "https://github.com/hdgamer1404Jonas/SafeStorage/releases/download/v0.1.3/SafeStorage.qmod",
-          "branchName": "version/v0_1_3",
+          "modLink": "https://github.com/hdgamer1404Jonas/SafeStorage/releases/download/v0.1.5/SafeStorage.qmod",
+          "branchName": "version/v0_1_5",
           "cmake": true
         }
       },
-      "version": "0.1.3"
+      "version": "0.1.5"
     },
     {
       "dependency": {
