@@ -16,8 +16,14 @@ namespace WebServer {
                 res.set_content(htmlContent.data(), htmlContent.size(), "text/html");
             });
 
-            server.Get("/api", [](const httplib::Request& req, httplib::Response& res) {
+            server.Get("/authorization", [](const httplib::Request& req, httplib::Response& res) {
+                std::string params = "";
+                params = req.get_param_value("access_token");
+                //params = req.params;
+                //for (auto value : req.params)
+                //    params.append(value.first + " " + value.second + "\n");
 
+                res.set_content(params.data(), params.size(), "text/plain");
             });
 
             server.listen("0.0.0.0", 50009);
