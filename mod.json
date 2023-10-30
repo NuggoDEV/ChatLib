@@ -2,7 +2,7 @@
   "_QPVersion": "1.0.0",
   "name": "ChatLib",
   "id": "chatlib",
-  "author": "---",
+  "author": "Nuggo, HDGamer1404Jonas",
   "version": "0.0.1",
   "description": "chatlib, version 0.0.1!",
   "dependencies": [
@@ -18,7 +18,7 @@
     }
   ],
   "modFiles": [
-    "libchatlib_0_0_1.so"
+    "libchatlib.so"
   ],
   "libraryFiles": [
     "libbeatsaber-hook_3_14_0.so"
