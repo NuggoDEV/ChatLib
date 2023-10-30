@@ -4,3 +4,4 @@ build/
 extern/
 .cache/
 cmake-build-debug/
+*.log
