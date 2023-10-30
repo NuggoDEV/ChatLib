@@ -6,7 +6,10 @@
     "id": "chatlib",
     "version": "0.0.1",
     "url": "https://github.com/NuggoDEV/ChatLib",
-    "additionalData": {}
+    "additionalData": {
+      "overrideSoName": "libchatlib.so",
+      "cmake": true
+    }
   },
   "dependencies": [
     {
@@ -23,6 +26,16 @@
       "id": "safestorage",
       "versionRange": "^0.1.3",
       "additionalData": {}
+    },
+    {
+      "id": "codegen",
+      "versionRange": "^0.33.0",
+      "additionalData": {}
+    },
+    {
+      "id": "bsml",
+      "versionRange": "^0.3.3",
+      "additionalData": {}
     }
   ],
   "workspace": {
@@ -30,24 +43,24 @@
       "build": [
         "pwsh ./scripts/build.ps1"
       ],
+      "tomb": [
+        "pwsh ./scripts/pull-tombstone.ps1"
+      ],
       "copy": [
         "pwsh ./scripts/copy.ps1"
-      ],
-      "logcat": [
-        "pwsh ./scripts/start-logging.ps1"
       ],
       "qmod": [
         "pwsh ./scripts/build.ps1",
         "pwsh ./scripts/createqmod.ps1"
       ],
-      "restart": [
-        "pwsh ./scripts/restart-game.ps1"
-      ],
       "stack": [
         "pwsh ./scripts/ndk-stack.ps1"
       ],
-      "tomb": [
-        "pwsh ./scripts/pull-tombstone.ps1"
+      "restart": [
+        "pwsh ./scripts/restart-game.ps1"
+      ],
+      "logcat": [
+        "pwsh ./scripts/start-logging.ps1"
       ]
     }
   }
