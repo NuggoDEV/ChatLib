@@ -258,6 +258,8 @@
                 </div>
                 <div class="main-content-item">
                     Connected Channels here
+                    <br>
+                    <button onclick="{HandleAuthFlow()}">Link Channel</button>
                 </div>
                 <div class="main-content-item">
                     Uhhhhhhhhhhhhhh
@@ -276,4 +278,10 @@
 
     </div>
 </body>
+<script>
+    function HandleAuthFlow()
+    {
+        window.location = "https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=3a2hpvrnw124xvhw9e3c679teotb93&redirect_uri=http://localhost:50009/authorization"
+    }
+</script>
 </html>
