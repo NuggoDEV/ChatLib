@@ -1,7 +1,9 @@
 #include "WebServer/WebServer.hpp"
 #include "assets.hpp"
 #include "WebServer/ServeAssets.hpp"
+#include "PrivateVariables.hpp"
 
+std::string code = "";
 
 namespace WebServer {
     bool wsrunning = false;
@@ -19,14 +21,12 @@ namespace WebServer {
 
             serveAssets(server);
 
-            server.Get("/authorization", [](const httplib::Request& req, httplib::Response& res) {
-                std::string params = "";
-                params = req.get_param_value("access_token");
-                //params = req.params;
-                //for (auto value : req.params)
-                //    params.append(value.first + " " + value.second + "\n");
-
-                res.set_content(params.data(), params.size(), "text/plain");
+            server.Get("/auth", [](const httplib::Request& req, httplib::Response& res) {
+                if (req.has_param("token"))
+                {
+                    code = req.get_param_value("token");
+                    res.set_content(code.data(), code.size(), "text/plain");
+                }
             });
 
             server.listen("0.0.0.0", 50009);
