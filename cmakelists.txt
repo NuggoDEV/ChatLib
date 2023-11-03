@@ -30,7 +30,6 @@ add_library(
     SHARED 
     ${cpp_file_list}
     ${c_file_list}
-        shared/Objects/Twitch/Client.hpp src/WebServer/WebServer.cpp include/WebServer/WebServer.hpp include/httplib/httplib.h
 )
 
 # add src dir as include dir
