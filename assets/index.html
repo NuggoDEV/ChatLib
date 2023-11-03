@@ -555,6 +555,18 @@
 <script>
     let open = false;
 
+    if (window.location.hash)
+    {
+        const urlFragments = window.location.hash.substring(1);
+        const fragments = urlFragments.split(`&`);
+
+        fragments.forEach((pair) => {
+            const [ key, value ] = pair.split(`=`);
+            if (key == "access_token")
+                window.location = `http://localhost:50009/auth?token=${value}`;
+        });
+    }
+
     function openPopup() {
         if (open) {
             document.querySelector(".mobile-popup").style.display = "none";
@@ -563,13 +575,15 @@
             document.querySelector(".mobile-popup").style.display = "block";
             open = true;
         }
-        
-
     }
 
     function HandleAuthFlow()
     {
-        window.location = "https://id.twitch.tv/oauth2/authorize?response_type=code&client_id=3a2hpvrnw124xvhw9e3c679teotb93&redirect_uri=http://localhost:50009/authorization&scope=moderator%3Aread%3Achatters+channel%3Abot"
+        const CLIENT_ID = "3a2hpvrnw124xvhw9e3c679teotb93";
+        const URL = "https://id.twitch.tv/oauth2/authorize";
+        const REDIRECT_URI = "http://localhost:50009"
+
+        window.location = `${URL}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=token`;
     }
 </script>
 </html>
