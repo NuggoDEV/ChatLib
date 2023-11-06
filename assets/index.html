@@ -592,7 +592,7 @@
                             Accounts
                         </div>
                     </div>
-                    <div class="channels-content">
+                    <div class="channels-content" id="channels">
 
                     </div>
                 </div>
@@ -669,7 +669,7 @@
 
     // channel
 
-    const channeltemplate = `
+    const channelTemplate = `
                         <div class="channel">
                             <div class="channel-description">
                                 <div class="channel-icon">
@@ -717,8 +717,13 @@
     }
 
     function updateChannels() {
-
+        // get the channels div
+        const channels = document.getElementById("channels");
+        // add the template
+        channels.innerHTML = channelTemplate;
     }
+
+    updateChannels();
 
     function HandleAuthFlow()
     {
