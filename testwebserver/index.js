@@ -4,7 +4,7 @@ const path = require('path');
 
 const app = express();
 
-app.use(express.static('assets'));
+app.use(express.static('../assets'));
 
 const endpoints = fs.readdirSync(path.join(__dirname, 'endpoints')).filter(file => file.endsWith('.js'));
 endpoints.forEach(endpoint => {
