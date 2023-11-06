@@ -1,1 +1,19 @@
-const _0x4d614a=_0x97e3;(function(_0x332611,_0x46d04d){const _0x5861f9=_0x97e3,_0xa4b56e=_0x332611();while(!![]){try{const _0x2658d0=-parseInt(_0x5861f9(0xcf))/0x1+-parseInt(_0x5861f9(0xc9))/0x2*(-parseInt(_0x5861f9(0xcb))/0x3)+parseInt(_0x5861f9(0xd1))/0x4*(parseInt(_0x5861f9(0xc8))/0x5)+-parseInt(_0x5861f9(0xc5))/0x6+-parseInt(_0x5861f9(0xca))/0x7+-parseInt(_0x5861f9(0xc7))/0x8+parseInt(_0x5861f9(0xcd))/0x9;if(_0x2658d0===_0x46d04d)break;else _0xa4b56e['push'](_0xa4b56e['shift']());}catch(_0x37b8f4){_0xa4b56e['push'](_0xa4b56e['shift']());}}}(_0xb16f,0x9eadc));function _0x97e3(_0x9261f2,_0x1e50b7){const _0xb16fa5=_0xb16f();return _0x97e3=function(_0x97e329,_0x3e1cbc){_0x97e329=_0x97e329-0xc4;let _0x3d9f58=_0xb16fa5[_0x97e329];return _0x3d9f58;},_0x97e3(_0x9261f2,_0x1e50b7);}const express=require(_0x4d614a(0xd0)),fs=require('fs'),path=require(_0x4d614a(0xd2)),server=express();function _0xb16f(){const _0xf12fb9=['5hlNemD','1733306csiPmN','3026947ylFQIi','3NNVkiK','listen','14749092qyybOe','log','831764RGPCOc','express','2825648sPneIr','path','Webserver\x20is\x20running','../assets/','943044ycwJUY','static','9124368cKNScG'];_0xb16f=function(){return _0xf12fb9;};return _0xb16f();}server['use'](express[_0x4d614a(0xc6)](_0x4d614a(0xc4))),server[_0x4d614a(0xcc)](0xbb8,()=>{const _0x3fb59a=_0x4d614a;console[_0x3fb59a(0xce)](_0x3fb59a(0xd3));});
+const express = require('express');
+const fs = require('fs');
+const path = require('path');
+
+const app = express();
+
+app.use(express.static('assets'));
+
+const endpoints = fs.readdirSync(path.join(__dirname, 'endpoints')).filter(file => file.endsWith('.js'));
+endpoints.forEach(endpoint => {
+    const route = '/api/' + endpoint.replace('.js', '');
+    const handler = require('./endpoints/' + endpoint).default;
+    app.get(route, handler);
+});
+
+
+app.listen(3000, () => {
+    console.log('Server started at port 3000');
+});

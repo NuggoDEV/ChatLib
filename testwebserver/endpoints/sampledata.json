@@ -1,0 +1,24 @@
+{
+  "accounts": [
+    {
+      "id": "df6r8a",
+      "name": "TwitchUser1",
+      "type": "twitch"
+    },
+    {
+      "id": "df66q8a",
+      "name": "TwitchUser2",
+      "type": "twitch"
+    },
+    {
+      "id": "t56zt8a",
+      "name": "YoutubeUser2",
+      "type": "twitch"
+    },
+    {
+      "id": "t56zt8a",
+      "name": "YoutubeUser2",
+      "type": "youtube"
+    }
+  ]
+}
