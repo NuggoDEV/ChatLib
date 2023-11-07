@@ -14,6 +14,11 @@ Logger& getLogger()
     return *logger;
 }
 
+ModInfo GetModInfo()
+{
+    return modInfo;
+}
+
 extern "C" void setup(ModInfo& info)
 {
     info.id = MOD_ID;
