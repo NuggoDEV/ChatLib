@@ -1,6 +1,6 @@
 #include "Platforms/Twitch.hpp"
 
-namespace Twitch::Connection {
+namespace ChatLib::Platforms::Twitch {
     void getUser() {
         
     }
