@@ -5,6 +5,7 @@
   "author": "Nuggo, HDGamer1404Jonas",
   "version": "${version}",
   "description": "${mod_id}, version ${version}!",
+  "isLibrary": true,
   "dependencies": [],
   "modFiles": [],
   "libraryFiles": [],
