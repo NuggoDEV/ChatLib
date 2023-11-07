@@ -15,7 +15,7 @@ If you're planning to use ChatLib in your mod, visit the [ChatLib API Doc](./api
 - [ ] Youtube
 
 
-### Features:
+### Features
 
 - [x] Web Interface with many features
 - [x] HTTP Api to interact with the mod
