@@ -5,3 +5,4 @@ extern/
 .cache/
 cmake-build-debug/
 *.log
+/testwebserver/node_modules
