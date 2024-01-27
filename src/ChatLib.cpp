@@ -1,44 +1,28 @@
 #include "ChatLib.hpp"
-#include "Logger.hpp"
-#include "WebServer/WebServer.hpp"
-#include "UI/CLView.hpp"
-#include "bsml/shared/BSML.hpp"
-#include "Config.hpp"
 
-ModInfo modInfo = ModInfo{MOD_ID, VERSION};
-bool didInit = false;
+static modloader::ModInfo modInfo{MOD_ID, VERSION, 0};
 
-Logger& getLogger()
-{
-    static auto logger = new Logger(modInfo, LoggerOptions(false, true));
+Configuration& getConfig() {
+    static Configuration config(modInfo);
+    return config;
+}
+
+Logger& getLogger() {
+    static Logger* logger = new Logger(modInfo);
     return *logger;
 }
 
-ModInfo GetModInfo()
-{
-    return modInfo;
-}
+extern "C" void setup(CModInfo& info) {
+    info.id = modInfo.id.c_str();
+    info.version = modInfo.version.c_str();
+    info.version_long = modInfo.versionLong;
 
-extern "C" void setup(ModInfo& info)
-{
-    info.id = MOD_ID;
-    info.version = VERSION;
+    getConfig().Load();
+    getLogger().info("Completed setup!");
 }
-
-extern "C" void load()
-{
-    ChatLib::Init();
-}
-
-void ChatLib::Init()
-{
-    if (didInit)
-        return;
-    didInit = true;
+extern "C" void load() {
     il2cpp_functions::Init();
 
-    getLogger().info("Started initializing");
-    getConfig().Init(modInfo);
-    WebServer::start();
-    BSML::Register::RegisterSettingsMenu<ChatLib::UI::CLView*>("ChatLib", false);
-} 
+    getLogger().info("Installing hooks...");
+    getLogger().info("Installed all hooks!");
+}

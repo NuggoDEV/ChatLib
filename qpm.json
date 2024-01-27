@@ -1,4 +1,5 @@
 {
+  "version": "0.1.0",
   "sharedDir": "shared",
   "dependenciesDir": "extern",
   "info": {
@@ -11,76 +12,74 @@
       "cmake": true
     }
   },
+  "workspace": {
+    "scripts": {
+      "build": [
+        "pwsh ./scripts/build.ps1"
+      ],
+      "copy": [
+        "pwsh ./scripts/copy.ps1"
+      ],
+      "logcat": [
+        "pwsh ./scripts/start-logging.ps1"
+      ],
+      "qmod": [
+        "pwsh ./scripts/build.ps1",
+        "pwsh ./scripts/createqmod.ps1"
+      ],
+      "restart": [
+        "pwsh ./scripts/restart-game.ps1"
+      ],
+      "stack": [
+        "pwsh ./scripts/ndk-stack.ps1"
+      ],
+      "tomb": [
+        "pwsh ./scripts/pull-tombstone.ps1"
+      ]
+    }
+  },
   "dependencies": [
-    {
-      "id": "beatsaber-hook",
-      "versionRange": "^3.14.0",
-      "additionalData": {}
-    },
-    {
-      "id": "custom-types",
-      "versionRange": "^0.15.24",
-      "additionalData": {}
-    },
-    {
-      "id": "codegen",
-      "versionRange": "^0.33.0",
-      "additionalData": {}
-    },
-    {
-      "id": "bsml",
-      "versionRange": "^0.3.3",
-      "additionalData": {}
-    },
-    {
-      "id": "safestorage",
-      "versionRange": "^0.1.5",
-      "additionalData": {
-        "private": true
-      }
-    },
-    {
-      "id": "config-utils",
-      "versionRange": "^1.1.0",
-      "additionalData": {}
-    },
-    {
-      "id": "libil2cpp",
-      "versionRange": "=0.2.3",
-      "additionalData": {}
-    },
     {
       "id": "libcurl",
       "versionRange": "^7.78.0",
       "additionalData": {
         "private": true
       }
+    },
+    {
+      "id": "beatsaber-hook",
+      "versionRange": "^5.0.7",
+      "additionalData": {}
+    },
+    {
+      "id": "custom-types",
+      "versionRange": "^0.16.14",
+      "additionalData": {}
+    },
+    {
+      "id": "bs-cordl",
+      "versionRange": "^3402.1.2",
+      "additionalData": {}
+    },
+    {
+      "id": "bsml",
+      "versionRange": "^0.4.5",
+      "additionalData": {}
+    },
+    {
+      "id": "safestorage",
+      "versionRange": "^1.1.1",
+      "additionalData": {}
+    },
+    {
+      "id": "libil2cpp",
+      "versionRange": "^0.3.1",
+      "additionalData": {}
+    },
+    {
+      "id": "scotland2",
+      "versionRange": "^0.1.3",
+      "additionalData": {}
     }
-  ],
-  "workspace": {
-    "scripts": {
-      "logcat": [
-        "pwsh ./scripts/start-logging.ps1"
-      ],
-      "restart": [
-        "pwsh ./scripts/restart-game.ps1"
-      ],
-      "build": [
-        "pwsh ./scripts/build.ps1"
-      ],
-      "qmod": [
-        "pwsh ./scripts/build.ps1",
-        "pwsh ./scripts/createqmod.ps1"
-      ],
-      "copy": [
-        "pwsh ./scripts/copy.ps1"
-      ],
-      "tomb": [
-        "pwsh ./scripts/pull-tombstone.ps1"
-      ],
-      "stack": [
-        "pwsh ./scripts/ndk-stack.ps1"
-      ]
-    }
-  }
+  ]
 }

@@ -2,26 +2,34 @@
   "_QPVersion": "1.0.0",
   "name": "ChatLib",
   "id": "chatlib",
+  "modloader": "Scotland2",
   "author": "Nuggo, HDGamer1404Jonas",
   "version": "0.0.1",
   "description": "chatlib, version 0.0.1!",
+  "isLibrary": true,
   "dependencies": [
     {
-      "version": "^0.15.24",
+      "version": "^0.16.14",
       "id": "custom-types",
-      "downloadIfMissing": "https://github.com/sc2ad/Il2CppQuestTypePatching/releases/download/v0.15.24/CustomTypes.qmod"
+      "downloadIfMissing": "https://github.com/QuestPackageManager/Il2CppQuestTypePatching/releases/download/v0.16.14/CustomTypes.qmod"
     },
     {
-      "version": "^0.1.3",
+      "version": "^0.4.5",
+      "id": "bsml",
+      "downloadIfMissing": "https://github.com/RedBrumbler/Quest-BSML/releases/download/v0.4.5/BSML.qmod"
+    },
+    {
+      "version": "^1.1.1",
       "id": "safestorage",
-      "downloadIfMissing": "https://github.com/hdgamer1404Jonas/SafeStorage/releases/download/v0.1.3/SafeStorage.qmod"
+      "downloadIfMissing": "https://github.com/hdgamer1404Jonas/SafeStorage/releases/download/v1.1.1/SafeStorage.qmod"
     }
   ],
-  "modFiles": [
-    "libchatlib.so"
-  ],
+  "modFiles": [],
+  "lateModFiles": [],
   "libraryFiles": [
-    "libbeatsaber-hook_3_14_0.so"
+    "libchatlib.so",
+    "libbeatsaber-hook_5_0_7.so",
+    "libsl2.so"
   ],
   "fileCopies": [],
   "copyExtensions": []

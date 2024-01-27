@@ -1,9 +1,0 @@
-<bg id='root' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='https://raw.githubusercontent.com/RedBrumbler/Quest-BSML-Docs/gh-pages/schema.xsd'>
-    <horizontal pref-width="60" pref-height="58">
-        <vertical>
-            <text text="Access Settings" font-size="8" font-align="Midline"/>
-            <text text="Unable to get IP, are you connected to internet?" id="IPText" font-size="5" rich-text="true"/>
-            <button text="Open Settings Page" on-click="OpenIPWebpage" pref-width="35" pref-height="10"/>
-        </vertical>
-    </horizontal>
-</bg>
