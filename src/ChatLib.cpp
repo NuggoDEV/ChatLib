@@ -16,8 +16,9 @@ extern "C" void setup(CModInfo& info) {
     info.version_long = modInfo.versionLong;
 
     ChatLib::CusLogger::setup(modInfo);
-
     out_info("Loaded ChatLib!");
+
+    getConfig().Load();
 }
 extern "C" void load() {
     il2cpp_functions::Init();

@@ -1,8 +1,8 @@
-#include "iostream"
+#include <utility>
+#include <iostream>
+#include <vector>
 #include "beatsaber-hook/shared/utils/logging.hpp"
 #include "scotland2/shared/modloader.h"
-#include "beatsaber-hook/shared/utils/logging.hpp"
-
 
 namespace ChatLib::CusLogger {
 
@@ -12,45 +12,47 @@ namespace ChatLib::CusLogger {
         std::string type;
     };
 
-    Logger* logger;
+    Logger* logger = nullptr;
     std::vector<Log> logs;
     std::vector<void (*)(Log)> callbacks;
 
-    std::vector<Log> getLogs () {
+    const std::vector<Log>& getLogs() {
         return logs;
     }
 
-    void out_info (std::string text) {
-        logger->info("%s", text.c_str());
+    void out_info(const std::string& text) {
+        if (logger) {
+            logger->info("%s", text.c_str());
+        }
 
-        Log log;
-        log.log = text;
-        log.type = "info";
+        Log log{ text, "info" };
         logs.push_back(log);
 
-        for (int i = 0; i < callbacks.size(); i++) {
-            callbacks[i](log);
+        for (const auto& callback : callbacks) {
+            callback(log);
         }
     }
 
-    void out_severe (std::string error) {
-        logger->error("%s", error.c_str());
+    void out_severe(const std::string& error) {
+        if (logger) {
+            logger->error("%s", error.c_str());
+        }
 
-        Log log;
-        log.log = error;
-        log.type = "error";
+        Log log{ error, "error" };
         logs.push_back(log);
 
-        for (int i = 0; i < callbacks.size(); i++) {
-            callbacks[i](log);
+        for (const auto& callback : callbacks) {
+            callback(log);
         }
     }
 
-    void setup (modloader::ModInfo modInfo) {
-        logger = new Logger(modInfo);
+    void setup(modloader::ModInfo modInfo) {
+        if (!logger) {
+            logger = new Logger(std::move(modInfo));
+        }
     }
 
-    void registerCallback (void (*callback)(Log)) {
+    void registerCallback(void (*callback)(Log)) {
         callbacks.push_back(callback);
     }
 }
