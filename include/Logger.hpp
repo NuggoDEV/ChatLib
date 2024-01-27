@@ -7,20 +7,21 @@
 namespace ChatLib::CusLogger {
 
     class Log {
-        public std::string log;
-        public std::string type;
+    public:
+        std::string log;
+        std::string type;
     };
 
     Logger* logger;
     std::vector<Log> logs;
-    std::vector<void (*)(std::string)> callbacks;
+    std::vector<void (*)(Log)> callbacks;
 
     std::vector<Log> getLogs () {
         return logs;
     }
 
     void out_info (std::string text) {
-        logger->info(text);
+        logger->info("%s", text.c_str());
 
         Log log;
         log.log = text;
@@ -33,9 +34,7 @@ namespace ChatLib::CusLogger {
     }
 
     void out_severe (std::string error) {
-        logger->error(error);
-        public std::string log;
-        public std::string type;
+        logger->error("%s", error.c_str());
 
         Log log;
         log.log = error;
@@ -47,7 +46,7 @@ namespace ChatLib::CusLogger {
         }
     }
 
-    void setup (CModInfo modInfo) {
+    void setup (modloader::ModInfo modInfo) {
         logger = new Logger(modInfo);
     }
 

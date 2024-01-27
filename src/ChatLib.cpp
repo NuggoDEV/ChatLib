@@ -15,12 +15,12 @@ extern "C" void setup(CModInfo& info) {
     info.version = modInfo.version.c_str();
     info.version_long = modInfo.versionLong;
 
-    Logger::setup(modInfo);
+    ChatLib::CusLogger::setup(modInfo);
 
-    out_info("Loaded ChatLib!")
+    out_info("Loaded ChatLib!");
 }
 extern "C" void load() {
     il2cpp_functions::Init();
 
-    out_info("Loaded ChatLib!")
+    out_info("Loaded ChatLib!");
 }
