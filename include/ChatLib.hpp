@@ -8,4 +8,3 @@
 #include "beatsaber-hook/shared/utils/hooking.hpp"
 
 Configuration& getConfig();
-Logger& getLogger();
