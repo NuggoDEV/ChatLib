@@ -2,6 +2,7 @@
 #include <thread>
 #include "Logger.hpp"
 #include "Helpers/TwitchTokenValidation.hpp"
+#include "IRC/TwitchIRCClient.hpp"
 
 using namespace ChatLib::CusLogger;
 using namespace ChatLib::Helpers::TwitchTokenValidator;
@@ -11,19 +12,44 @@ namespace ChatLib::Types {
     TwitchAuthorizedConnection::TwitchAuthorizedConnection(std::string accountName, std::string token, std::string channelName)
             : accountName(accountName), token(token), channelName(channelName), connectionThread(nullptr) {
 
-        this->connectionThread = new std::thread([this]() {
-            bool tokenValid = validateToken(this->token, this->accountName);
+        if (this->connectionStarted) return;
 
-            if (!tokenValid) {
-                out_severe("Twitch token validation failed. Terminating connection.");
-                return;
+        this->connectionThread = new std::thread([this]() {
+            if (!validateToken(this->token, this->accountName)) return;
+            if(this->connectionTerminated) return;
+            if (this->connectionStarted) return;
+            this->connectionStarted = true;
+
+            TwitchIRCClient client = TwitchIRCClient();
+
+            client.InitSocket();
+            client.Connect();
+            client.Login(this->accountName, this->token);
+            client.JoinChannel(this->channelName);
+
+            
+
+
+            while (true) {
+                if (this->connectionTerminated) {
+                    client.Disconnect();
+                    break;
+                }
+
+                if (!this->messageQueue.empty()) {
+                    std::string message = this->messageQueue[0];
+                    this->messageQueue.erase(this->messageQueue.begin());
+                    client.SendChatMessage(message);
+                }
             }
 
-            out_info("Twitch token validation successful. Starting connection.");
+
+
         });
     }
 
     void TwitchAuthorizedConnection::sendMessage(std::string message) {
+        this->messageQueue.push_back(message);
     }
 
     void TwitchAuthorizedConnection::registerMessageCallback(void (*callback)(std::string)) {
@@ -35,6 +61,9 @@ namespace ChatLib::Types {
 
     void TwitchAuthorizedConnection::terminate() {
         this->connectionTerminated = true;
+    }
+
+    void TwitchAuthorizedConnection::onIRCMessage(IRCMessage message, TwitchIRCClient* client) {
     }
 
 
@@ -51,4 +80,6 @@ namespace ChatLib::Types {
         this->connectionTerminated = true;
     }
 
+    void TwitchUnauthorizedConnection::onIRCMessage(IRCMessage message, TwitchIRCClient* client) {
+    }
 }

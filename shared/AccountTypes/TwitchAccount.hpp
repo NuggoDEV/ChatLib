@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include "IRC/TwitchIRCClient.hpp"
 
 
 namespace ChatLib::Types {
@@ -24,6 +25,10 @@ namespace ChatLib::Types {
         std::string token;
         std::thread* connectionThread;
         std::atomic<bool> connectionTerminated = false;
+        std::atomic<bool> connectionStarted = false;
+        std::vector<std::string> messageQueue;
+        std::vector<IRCMessage> newMessages;
+        void onIRCMessage(IRCMessage message, TwitchIRCClient* client);
     };
 
 
@@ -43,5 +48,8 @@ namespace ChatLib::Types {
     private:
         std::thread* connectionThread;
         std::atomic<bool> connectionTerminated = false;
+        std::atomic<bool> connectionStarted = false;
+        std::vector<IRCMessage> newMessages;
+        void onIRCMessage(IRCMessage message, TwitchIRCClient* client);
     };
 }
