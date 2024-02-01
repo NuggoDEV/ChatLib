@@ -1,6 +1,5 @@
 #include "AccountTypes/TwitchAccount.hpp"
 #include <thread>
-#include "libcurl/shared/curl.h"
 #include "Logger.hpp"
 #include "Helpers/TwitchTokenValidation.hpp"
 
@@ -35,18 +34,21 @@ namespace ChatLib::Types {
     }
 
     void TwitchAuthorizedConnection::terminate() {
+        this->connectionTerminated = true;
     }
 
 
-    // TwitchUnauthorizedConnection Implementierung
     TwitchUnauthorizedConnection::TwitchUnauthorizedConnection(std::string accountName, std::string channelName)
-            : accountName(accountName), channelName(channelName), connectionThread(nullptr) {}
+            : accountName(accountName), channelName(channelName), connectionThread(nullptr) {
+
+    }
 
     void TwitchUnauthorizedConnection::registerMessageCallback(void (*callback)(std::string)) {
         messageCallbacks.push_back(callback);
     }
 
     void TwitchUnauthorizedConnection::terminate() {
+        this->connectionTerminated = true;
     }
 
 }

@@ -23,6 +23,7 @@ namespace ChatLib::Types {
     private:
         std::string token;
         std::thread* connectionThread;
+        std::atomic<bool> connectionTerminated = false;
     };
 
 
@@ -41,5 +42,6 @@ namespace ChatLib::Types {
 
     private:
         std::thread* connectionThread;
+        std::atomic<bool> connectionTerminated = false;
     };
 }
