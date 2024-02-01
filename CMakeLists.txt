@@ -30,6 +30,7 @@ add_library(
     SHARED 
     ${cpp_file_list}
     ${c_file_list}
+        src/AccountTypes/TwitchAccount.cpp
 )
 
 # add src dir as include dir
