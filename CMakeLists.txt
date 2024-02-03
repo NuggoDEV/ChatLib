@@ -31,6 +31,7 @@ add_library(
     ${cpp_file_list}
     ${c_file_list}
         src/AccountTypes/TwitchAuthorizedConnection.cpp
+        shared/Types/Global/Message.hpp
 )
 
 # add src dir as include dir
