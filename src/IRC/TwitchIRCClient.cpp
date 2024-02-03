@@ -167,7 +167,7 @@ void TwitchIRCClient::Parse(std::string data)
     CallHook(command, ircMessage);
 }
 
-void TwitchIRCClient::HookIRCCommand(std::string command, void (*function)(IRCMessage /*message*/, TwitchIRCClient* /*client*/))
+void TwitchIRCClient::HookIRCCommand(std::string command, std::function<void(IRCMessage, TwitchIRCClient*)> function)
 {
     IRCCommandHook hook;
 
@@ -186,7 +186,8 @@ void TwitchIRCClient::CallHook(std::string command, IRCMessage message)
     {
         if (itr->command == command)
         {
-            (*(itr->function))(message, this);
+            //(*(itr->function))(message, this);
+            itr->function(message, this);
             break;
         }
     }

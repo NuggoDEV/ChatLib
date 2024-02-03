@@ -71,7 +71,7 @@ struct IRCCommandHook
     IRCCommandHook() : function(NULL) {};
 
     std::string command;
-    void (*function)(IRCMessage /*message*/, TwitchIRCClient* /*client*/);
+    std::function<void(IRCMessage, TwitchIRCClient*)> function;
 };
 
 class TwitchIRCClient
@@ -96,7 +96,7 @@ public:
 
     void ReceiveData();
 
-    void HookIRCCommand(std::string /*command*/, void (*function)(IRCMessage /*message*/, TwitchIRCClient* /*client*/));
+    void HookIRCCommand(std::string /*command*/, std::function<void(IRCMessage, TwitchIRCClient*)> /*function*/);
 
     void Parse(std::string /*data*/);
 
