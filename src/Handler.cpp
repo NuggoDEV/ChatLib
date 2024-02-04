@@ -2,6 +2,9 @@
 
 namespace ChatLib::Handler {
 
+    void initialize() {
+    }
+
     void addGlobalCallback(std::function<void(ChatLib::Types::Global::Message)> callback) {
         globalCallbacks.push_back(callback);
     }
