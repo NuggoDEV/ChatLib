@@ -30,10 +30,11 @@ void validateConfig() {
             ChatLib::Internal::Accounts::AuthorizedTwitchConnection connection;
             connection.username = entry["username"].GetString();
             connection.safeStorageKey = entry["safeStorageKey"].GetString();
+            connection.listeningChannel = entry["listeningChannel"].GetString();
             connection.isActivated = entry["isActivated"].GetBool();
 
             // check if all the values are present
-            if (connection.username.empty() || connection.safeStorageKey.empty()) {
+            if (connection.username.empty() || connection.safeStorageKey.empty() || connection.listeningChannel.empty()) {
                 invalidAuthorizedTwitchConnections.push_back(connection);
                 // remove the entry from the config
                 getConfig().config["AuthorizedTwitchConnections"].Erase(&entry);
@@ -108,7 +109,7 @@ extern "C" void load() {
 
     validateConfig();
 
-    ChatLib::Handler::initialize();
+    ChatLib::Handler::initialize(modInfo.to_c());
 
     out_info("Loaded ChatLib!");
 }
