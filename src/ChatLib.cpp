@@ -3,6 +3,7 @@
 #include "Internal/AccountStorage.hpp"
 #include "safestorage/shared/interface.hpp"
 #include "Helpers/TwitchTokenValidation.hpp"
+#include "Handler.hpp"
 
 using namespace ChatLib::CusLogger;
 
@@ -61,6 +62,11 @@ void validateConfig() {
             unauthorizedTwitchConnections.push_back(connection);
         }
     }
+
+
+    ChatLib::Handler::invalidAuthorizedTwitchConnections = invalidAuthorizedTwitchConnections;
+    ChatLib::Handler::authorizedTwitchConnections = authorizedTwitchConnections;
+    ChatLib::Handler::unauthorizedTwitchConnections = unauthorizedTwitchConnections;
 }
 
 extern "C" void setup(CModInfo& info) {
