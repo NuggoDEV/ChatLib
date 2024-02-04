@@ -17,6 +17,7 @@ Configuration& getConfig() {
 void validateConfig() {
     std::vector<ChatLib::Internal::Accounts::AuthorizedTwitchConnection> invalidAuthorizedTwitchConnections;
     std::vector<ChatLib::Internal::Accounts::AuthorizedTwitchConnection> authorizedTwitchConnections;
+    std::vector<ChatLib::Internal::Accounts::UnauthorizedTwitchConnection> invalidUnauthorizedTwitchConnections;
     std::vector<ChatLib::Internal::Accounts::UnauthorizedTwitchConnection> unauthorizedTwitchConnections;
 
     // check if there is a vector for ChatLib::Internal::Accounts::AuthorizedTwitchConnection in the config
@@ -29,10 +30,23 @@ void validateConfig() {
             ChatLib::Internal::Accounts::AuthorizedTwitchConnection connection;
             connection.username = entry["username"].GetString();
             connection.safeStorageKey = entry["safeStorageKey"].GetString();
+            connection.isActivated = entry["isActivated"].GetBool();
+
+            // check if all the values are present
+            if (connection.username.empty() || connection.safeStorageKey.empty()) {
+                invalidAuthorizedTwitchConnections.push_back(connection);
+                // remove the entry from the config
+                getConfig().config["AuthorizedTwitchConnections"].Erase(&entry);
+                out_severe("Invalid Authorized Twitch Connection found");
+                continue;
+            }
 
             // check if safeStorage has the key
             if (SafeStorage::Interface::get(modInfo.id, connection.safeStorageKey).empty()) {
                 invalidAuthorizedTwitchConnections.push_back(connection);
+                // remove the entry from the config
+                getConfig().config["AuthorizedTwitchConnections"].Erase(&entry);
+                out_severe("Invalid SafeStorage Key found");
             } else {
                 // check if the token is valid
                 if (!ChatLib::Helpers::TwitchTokenValidator::validateToken(SafeStorage::Interface::get(modInfo.id, connection.safeStorageKey), connection.username)) {
@@ -58,6 +72,15 @@ void validateConfig() {
         for (auto& entry : getConfig().config["UnauthorizedTwitchConnections"].GetArray()) {
             ChatLib::Internal::Accounts::UnauthorizedTwitchConnection connection;
             connection.username = entry["username"].GetString();
+            connection.isActivated = entry["isActivated"].GetBool();
+
+            if (connection.username.empty()) {
+                invalidUnauthorizedTwitchConnections.push_back(connection);
+                // remove the entry from the config
+                getConfig().config["UnauthorizedTwitchConnections"].Erase(&entry);
+                out_severe("Invalid Unauthorized Twitch Connection found");
+                continue;
+            }
 
             unauthorizedTwitchConnections.push_back(connection);
         }
@@ -66,6 +89,7 @@ void validateConfig() {
 
     ChatLib::Handler::invalidAuthorizedTwitchConnections = invalidAuthorizedTwitchConnections;
     ChatLib::Handler::authorizedTwitchConnections = authorizedTwitchConnections;
+    ChatLib::Handler::invalidUnauthorizedTwitchConnections = invalidUnauthorizedTwitchConnections;
     ChatLib::Handler::unauthorizedTwitchConnections = unauthorizedTwitchConnections;
 }
 
@@ -83,6 +107,8 @@ extern "C" void load() {
     il2cpp_functions::Init();
 
     validateConfig();
+
+    ChatLib::Handler::initialize();
 
     out_info("Loaded ChatLib!");
 }
