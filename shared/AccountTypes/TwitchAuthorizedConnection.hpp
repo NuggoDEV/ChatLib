@@ -14,6 +14,7 @@ namespace ChatLib::Types {
      */
     class TwitchAuthorizedConnection {
     public:
+        TwitchAuthorizedConnection(TwitchAuthorizedConnection&&) = default;
         /**
          * @brief Constructor for TwitchAuthorizedConnection.
          * @param accountName The Twitch account name.

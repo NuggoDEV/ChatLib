@@ -16,8 +16,7 @@ namespace ChatLib::Handler {
                 continue;
             }
             out_info("Connecting Twitch Account: " + connection.username);
-
-            SafePtrUnity<TwitchAuthorizedConnection> twitchConnection = new TwitchAuthorizedConnection(connection.username, get(modInfo.id, connection.safeStorageKey), connection.listeningChannel);
+            std::shared_ptr<TwitchAuthorizedConnection> twitchConnection = std::make_shared<TwitchAuthorizedConnection>(connection.username, get(modInfo.id, connection.safeStorageKey), connection.listeningChannel);
             activeAuthorizedTwitchConnections.push_back(twitchConnection);
         }
 
@@ -27,7 +26,7 @@ namespace ChatLib::Handler {
             }
             out_info("Connecting Twitch Account: " + connection.username);
 
-            SafePtrUnity<TwitchUnauthorizedConnection> twitchConnection = new TwitchUnauthorizedConnection(connection.username, connection.listeningChannel);
+            std::shared_ptr<TwitchUnauthorizedConnection> twitchConnection = std::make_shared<TwitchUnauthorizedConnection>(connection.username, connection.listeningChannel);
             activeUnauthorizedTwitchConnections.push_back(twitchConnection);
         }
     }

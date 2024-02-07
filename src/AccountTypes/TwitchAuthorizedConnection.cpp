@@ -11,9 +11,9 @@ using namespace ChatLib::Helpers::TwitchTokenValidator;
 using namespace ChatLib::Types::Twitch;
 
 namespace ChatLib::Types {
-
     TwitchAuthorizedConnection::TwitchAuthorizedConnection(std::string accountName, std::string token, std::string channelName)
             : accountName(std::move(accountName)), token(std::move(token)), channelName(std::move(channelName)), connectionThread(nullptr) {
+
 
         if (this->connectionStarted) return;
 
