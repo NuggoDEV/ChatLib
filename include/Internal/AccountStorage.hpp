@@ -10,6 +10,7 @@ namespace ChatLib::Internal::Accounts {
 
     struct UnauthorizedTwitchConnection {
         std::string username;
+        std::string listeningChannel;
         bool isActivated;
     };
 }

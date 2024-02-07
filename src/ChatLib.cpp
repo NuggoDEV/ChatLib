@@ -73,9 +73,10 @@ void validateConfig() {
         for (auto& entry : getConfig().config["UnauthorizedTwitchConnections"].GetArray()) {
             ChatLib::Internal::Accounts::UnauthorizedTwitchConnection connection;
             connection.username = entry["username"].GetString();
+            connection.listeningChannel = entry["listeningChannel"].GetString();
             connection.isActivated = entry["isActivated"].GetBool();
 
-            if (connection.username.empty()) {
+            if (connection.username.empty() || connection.listeningChannel.empty()) {
                 invalidUnauthorizedTwitchConnections.push_back(connection);
                 // remove the entry from the config
                 getConfig().config["UnauthorizedTwitchConnections"].Erase(&entry);
